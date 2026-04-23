@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+}
+
+.divbackground {
+    transform-origin: 0 0;
+    position: relative;
+}
+
+.imagclick {
+    position: absolute;
+    opacity: 1;
+}
+
+.imagclick:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.imageInDiv{
+    opacity: 1;
+}
+
+.imageInDiv:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.imageNextShow{
+    position: absolute;
+    opacity: 1;
+}
+
+.imageNextShow:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.imageNextShow:hover + .imageNotShow{
+    display: block;
+}
+
+.imageNotShow{
+    position: absolute;
+    display: none;
+}
+
+.imageNotShow:hover{
+    display: block;
+}
+
+#draggable {
+    /* width: 100px;
+    height: 100px; */
+    background: red;
+    opacity: .5;
+    position: absolute;
+    cursor: pointer;
+  }

@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2.5D成品油</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script>
+        const pptHash = [{"name":null,"value":[null]}]
+        var pptIndex = 0;
+        var pptname = '';
+        var pptItem;
+        var urlReferrer;
+        var pptPath = '../resources/PPT/';
+        window.onload = function () {
+            if (document.referrer) {
+                urlReferrer = document.referrer;
+            }
+            var hash = window.location.hash.substr(1);
+            if (hash) {
+                let tmp = hash.split('|');
+                if (tmp.length == 1) {
+                    document.getElementById('my-image').src = pptPath + hash;
+                    document.getElementById('pptP').style.display = 'none';
+                    document.getElementById('pptN').style.display = 'none';
+                } else {
+                    pptIndex = tmp[1];
+                    pptname = decodeURI(tmp[0]);
+                    pptHash.forEach(function (item) {
+                        if (item.name == pptname) {
+                            pptItem = item;
+                            setNextBotton();
+                        }
+                    })
+                }
+            }
+        };
+
+        function setNextBotton() {
+            if (pptIndex == 0) {
+                document.getElementById('pptP').style.display = 'none';
+            } else {
+                document.getElementById('pptP').style.display = 'block';
+            }
+            if (pptIndex == pptItem.value.length - 1) {
+                document.getElementById('pptN').style.display = 'none';
+            } else {
+                document.getElementById('pptN').style.display = 'block';
+            }
+            document.getElementById('my-image').src = pptPath + pptItem.value[pptIndex];
+        }
+
+        function pptNext() {
+            pptIndex++;
+            setNextBotton();
+        }
+        function pptPre() {
+            pptIndex--;
+            setNextBotton();
+        }
+        function backUrl() {
+            window.location.href = urlReferrer;
+        }
+    </script>
+</head>
+
+<body style="background-color: black;">
+    <div id="my-aspect-ratio" class="divbackground">
+        <img id="my-image" style="position: absolute;">
+        
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
